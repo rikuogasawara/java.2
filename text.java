@@ -51,7 +51,7 @@ public class Chapter08_2 {
 			System.out.println("土曜日です");
 			break;
 		default:
-			System.out.println("曜日ではありません");
+			System.out.println("曜日ではありません.");
 		}
 	}
 }
