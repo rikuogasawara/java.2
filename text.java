@@ -1,57 +1,44 @@
+CapsuleTask.java
 package practice;
 
-import java.sql.SQLException;
+public class CapsuleTask {
+	private String content;
+	private int date;
+	private String status;
 
-public class Chapter12 {
+	public CapsuleTask(String content, int date) {
+		this.content = content;
+		this.date = date;
+		this.status = "未完了";
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public int getDate() {
+		return date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+}
+Chapter14.java
+package practice;
+
+public class Chapter14 {
 	public static void main(String[] args) {
-
-		try {
-			int array[] = { 1, 3, 5 };
-			Chapter12.validIndex(array, 2);
-			Chapter12.validIndex(array, 3);
-
-			// Exceptionが発生しない場合は出力される
-			System.out.println("validIndexの呼び出し終了");
-		} catch (IllegalArgumentException e) {
-			System.out.println("IllegalArgumentExceptionが発生しました");
-			// スタックトレースを出力
-			e.printStackTrace();
-		}
-
-		// tryを記述
-		// ・throwSQLExceptionメソッドを呼び出す
-		// catchを記述
-		// ・SQLExceptionをキャッチして、メッセージとスタックトレースを出力
-		// ・"throwSQLExceptionの呼び出し終了"のメッセージを出力
-		try {
-			// ・throwSQLExceptionメソッドを呼び出す
-			Chapter12.throwSQLException();
-		} catch (SQLException e) {
-			// ・SQLExceptionをキャッチして、メッセージとスタックトレースを出力
-			System.out.println("SQLExceptionが発生しました");
-			e.printStackTrace();
-		} finally {
-			// ・"throwSQLExceptionの呼び出し終了"のメッセージを出力
-			// 例外発生しても出力するため、finallyブロックに記述
-			System.out.println("throwSQLExceptionの呼び出し終了");
-		}
-
-		System.out.println("mainメソッド終了");
-	}
-
-	// validIndexメソッドを作成
-	// ・indexがarrayのサイズの範囲内なら、インデックスの要素を出力
-	// ・サイズの範囲外なら、IllegalArgumentExceptionをthrow
-	public static void validIndex(int[] array, int index) {
-		if (array.length <= index) {
-			throw new IllegalArgumentException(index + " はサイズの範囲外です");
-		}
-		System.out.println("インデックス " + index + " の要素は " + array[index] + " です");
-	}
-
-	// スローされる例外が検査例外なので、throws文が必要
-	public static void throwSQLException() throws SQLException {
-		// SQLExceptionは、通常、SQLでエラーの場合に発生する例外
-		throw new SQLException("SQLエラーです");
+		CapsuleTask task = new CapsuleTask("牛乳を買う", 20211021);
+		System.out.println("タスク内容は" + task.getContent() + "です。");
+		System.out.println("期限は" + task.getDate() + "です。");
+		System.out.println("状態は" + task.getStatus() + "です");
+		task.setStatus("完了");
+		System.out.println("状態は" + task.getStatus() + "になりました。");
 	}
 }
