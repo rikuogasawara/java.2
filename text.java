@@ -1,44 +1,27 @@
-CapsuleTask.java
+FlyingPhone.java
 package practice;
 
-public class CapsuleTask {
-	private String content;
-	private int date;
-	private String status;
+import extend.phone.Phone;
 
-	public CapsuleTask(String content, int date) {
-		this.content = content;
-		this.date = date;
-		this.status = "未完了";
+public class FlyingPhone implements Phone, Flying {
+	private int minutes;
+
+	public FlyingPhone(int minutes) {
+		this.minutes = minutes;
 	}
 
-	public String getContent() {
-		return content;
+	@Override
+	public void call(String number) {
+		System.out.println(number + " に電話します。通話できるのは飛んでいる間だけです。");
 	}
 
-	public int getDate() {
-		return date;
+	@Override
+	public void fly() {
+		System.out.println(minutes + " 分間、飛びます。 ");
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-}
-Chapter14.java
-package practice;
-
-public class Chapter14 {
-	public static void main(String[] args) {
-		CapsuleTask task = new CapsuleTask("牛乳を買う", 20211021);
-		System.out.println("タスク内容は" + task.getContent() + "です。");
-		System.out.println("期限は" + task.getDate() + "です。");
-		System.out.println("状態は" + task.getStatus() + "です");
-		task.setStatus("完了");
-		System.out.println("状態は" + task.getStatus() + "になりました。");
+	@Override
+	public void powerOff() {
+		Flying.super.powerOff();
 	}
 }
