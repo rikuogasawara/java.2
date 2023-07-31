@@ -1,19 +1,13 @@
-Map<Integer, String> classmates = new HashMap<>();
-classmates.put(1, "青木");
-classmates.put(2, "石坂");
-classmates.put(3, "小野田");
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
-// キーのみ
-for (Integer key : classmates.keySet()) {
-  System.out.println(key); // HashMapなので順序は不定
-}
+Set<Integer> set = new LinkedHashSet<>();
+set.add(1); // OK
+set.add("Two"); // コンパイルエラー
 
-// 値のみ
-for (String name : classmates.values()) {
-  System.out.println(name); // HashMapなので順序は不定
-}
-
-// キーと値のペア
-for (Map.Entry<Integer, String> classmate : classmates.entrySet()) {
-  System.out.println(classmate.getKey() + "番は" + classmate.getValue() + "さん"); // HashMapなので順序は不定
-}
+Map<Integer, String> map = new HashMap<>();
+map.put(1, "Taro"); // OK
+map.put(2, "Hanako"); // OK
+int value = map.get(0); // コンパイルエラー
