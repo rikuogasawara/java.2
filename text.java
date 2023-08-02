@@ -1,13 +1,19 @@
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-
-Set<Integer> set = new LinkedHashSet<>();
-set.add(1); // OK
-set.add("Two"); // コンパイルエラー
-
-Map<Integer, String> map = new HashMap<>();
-map.put(1, "Taro"); // OK
-map.put(2, "Hanako"); // OK
-int value = map.get(0); // コンパイルエラー
+Collections.sort(
+    animals,
+    new Comparator<String>() {
+      @Override
+      public int compare(String x, String y) {
+        // 数値が小さい順に並べる
+        return x.compareTo(y);
+      }
+    });
+    
+    for (int i = 0; i < 10; i++) {
+  Thread t = new Thread(new Runnable() {
+    @Override
+    public void run() {
+      System.out.println("無名クラスのテスト");
+    }
+  });
+  t.start();
+}
