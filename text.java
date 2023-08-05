@@ -1,19 +1,25 @@
-Collections.sort(
-    animals,
-    new Comparator<String>() {
-      @Override
-      public int compare(String x, String y) {
-        // 数値が小さい順に並べる
-        return x.compareTo(y);
-      }
-    });
-    
-    for (int i = 0; i < 10; i++) {
-  Thread t = new Thread(new Runnable() {
-    @Override
-    public void run() {
-      System.out.println("無名クラスのテスト");
-    }
-  });
-  t.start();
+@FunctionalInterface
+interface Func1 {
+	boolean isOdd(int x);
+}
+
+@FunctionalInterface
+interface Func2 {
+	String addNamePrefix(boolean male, String name);
+}
+
+public class Chapter8 {
+	public static void main(String[] args) throws Exception {
+		Func1 f1 = x -> x % 2 == 1;
+		Func2 f2 = (male, name) -> {
+			if (male) {
+				return "Mr." + name;
+			} else {
+				return "Ms." + name;
+			}
+		};
+		System.out.println(f1.isOdd(15));
+		System.out.println(f2.addNamePrefix(true, "Smith"));
+	}
+}
 }
